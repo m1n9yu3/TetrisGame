@@ -25,14 +25,14 @@ void GameLoop()
 
 	DrapGui((int*)aryMap, &myTetis);
 
-	while (true)
+	while (1)
 	{
 		endTime = time(NULL);
 
 		if (endTime - startTime >= 1)
 		{
 			startTime = endTime;
-			MoveDownBlock((int*)aryMap, &myTetis, 1);
+			MoveDownBlock((int*)aryMap, 1, &myTetis);
 			DrapGui((int*)aryMap, &myTetis);
 		}
 		if (MoveBlock((int*)aryMap, &myTetis) == YES)
@@ -82,7 +82,7 @@ void InitGame(int* arryMap, struct tagTetisPlay* pMyTetis)
 
 }
 
-int TapBlox(int* arryMap, tagTetisPlay * pMyTetis)
+int TapBlox(int* arryMap, struct tagTetisPlay * pMyTetis)
 {
 	int retMsg = NOT;
 	//NoShowCurBlock(arryMap, pMyTetis);
@@ -123,7 +123,7 @@ int TapBlox(int* arryMap, tagTetisPlay * pMyTetis)
 	return retMsg;
 }
 
-void MoveDownBlock(int* arryMap, tagTetisPlay* pMyTetis, int nStep)
+void MoveDownBlock(int* arryMap, int nStep, struct tagTetisPlay* pMyTetis)
 {
 	NoShowCurBlock(arryMap, pMyTetis);
 	for (int i = 0; i < BLOCKLENGTH; i++)
@@ -133,9 +133,9 @@ void MoveDownBlock(int* arryMap, tagTetisPlay* pMyTetis, int nStep)
 	ShowCurBlock(arryMap, pMyTetis);
 }
 
-int MoveBlock(int* arryMap, tagTetisPlay* pMyTetis)
+int MoveBlock(int* arryMap, struct tagTetisPlay* pMyTetis)
 {
-	tagTetisPlay tmpMyTetis = *pMyTetis;
+	struct tagTetisPlay tmpMyTetis = *pMyTetis;
 	int retMsg = YES;
 	// 取消地图显示
 	NoShowCurBlock(arryMap, pMyTetis);
@@ -219,7 +219,7 @@ int MoveBlock(int* arryMap, tagTetisPlay* pMyTetis)
 	return YES;
 }
 
-int DrapGui(int* arryMap, tagTetisPlay* pMyTetis)
+int DrapGui(int* arryMap, struct tagTetisPlay* pMyTetis)
 {
 	system("cls");
 	for (int i = 0; i < MAPROW; i++)
@@ -272,7 +272,7 @@ int DrapGui(int* arryMap, tagTetisPlay* pMyTetis)
 	return 0;
 }
 
-int GetBlock(tagCoord* NewBlockCoord)
+int GetBlock(struct tagCoord* NewBlockCoord)
 {
 
 	int curSelectBlockType = rand() % BLOCKTYPENUM;
@@ -540,7 +540,7 @@ void GetNextBlock(struct tagTetisPlay* pMyTetis)
 int ChangeBlock(int* arryMap, struct tagTetisPlay* pMyTetis)
 {
 
-	tagTetisPlay tmpMyTetis = *pMyTetis;
+	struct tagTetisPlay tmpMyTetis = *pMyTetis;
 
 	switch (pMyTetis->CurBlockType)
 	{
@@ -782,7 +782,7 @@ int IsInMapCol(int nCol)
 	return NOT;
 }
 
-void NoShowCurBlock(int* arryMap, tagTetisPlay* pMyTetis)
+void NoShowCurBlock(int* arryMap, struct tagTetisPlay* pMyTetis)
 {
 	// 取消原来的标记
 	for (int i = 0; i < BLOCKLENGTH; i++)
@@ -795,7 +795,7 @@ void NoShowCurBlock(int* arryMap, tagTetisPlay* pMyTetis)
 	}
 }
 
-void ShowCurBlock(int* arryMap, tagTetisPlay* pMyTetis)
+void ShowCurBlock(int* arryMap, struct tagTetisPlay* pMyTetis)
 {
 	// 取消原来的标记
 	for (int i = 0; i < BLOCKLENGTH; i++)
@@ -808,7 +808,7 @@ void ShowCurBlock(int* arryMap, tagTetisPlay* pMyTetis)
 	}
 }
 
-int IsCollisionAndOutMap(int* arryMap, tagTetisPlay* pMyTetis)
+int IsCollisionAndOutMap(int* arryMap, struct tagTetisPlay* pMyTetis)
 {
 
 	for (int i = 0; i < BLOCKLENGTH; i++)
@@ -828,7 +828,7 @@ int IsCollisionAndOutMap(int* arryMap, tagTetisPlay* pMyTetis)
 	return NOT;
 }
 
-int IsGameOver(int* arryMap, tagTetisPlay* pMyTetis)
+int IsGameOver(int* arryMap, struct tagTetisPlay* pMyTetis)
 {
 	for (int i = 0; i < BLOCKLENGTH; i++)
 	{

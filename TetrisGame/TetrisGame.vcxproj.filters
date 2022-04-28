@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="TetrisGame.cpp">
+    <ClCompile Include="TetrisGame.c">
       <Filter>源文件</Filter>
     </ClCompile>
-    <ClCompile Include="Game.cpp">
+    <ClCompile Include="Game.c">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

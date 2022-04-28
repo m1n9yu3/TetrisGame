@@ -82,9 +82,9 @@ void GameLoop();
 void InitGame(int* arryMap,struct tagTetisPlay* myTetis);
 
 // 消除方块
-int TapBlox(int* arryMap, tagTetisPlay * pMyTetis);
+int TapBlox(int* arryMap, struct tagTetisPlay * pMyTetis);
 
-void MoveDownBlock(tagTetisPlay* pMyTetis);
+void MoveDownBlock(struct tagTetisPlay* pMyTetis);
 
 // 移动当前图形
 int MoveBlock(int* arryMap, struct tagTetisPlay* myTetis);
@@ -97,7 +97,7 @@ int OnButtom(int* arryMap, struct tagTetisPlay* myTetis);
 
 
 // 获取一个新方块
-int GetBlock(tagCoord* NewBlockCoord);
+int GetBlock(struct tagCoord* NewBlockCoord);
 
 // 获取下一个一个方块
 void GetNextBlock(struct tagTetisPlay* myTetis);
@@ -111,16 +111,16 @@ int ChangeBlock(int* arryMap, struct tagTetisPlay* pMyTetis);
 int IsInMapCol(int nCol);
 
 // 地图不显示当前运行块
-void NoShowCurBlock(int* arryMap, tagTetisPlay* pMyTetis);
+void NoShowCurBlock(int* arryMap, struct tagTetisPlay* pMyTetis);
 
 // 地图显示当前运行块
-void ShowCurBlock(int* arryMap, tagTetisPlay* pMyTetis);
+void ShowCurBlock(int* arryMap, struct tagTetisPlay* pMyTetis);
 
 // 向下移动方块
-void MoveDownBlock(int* arryMap, tagTetisPlay* pMyTetis, int nStep);
+void MoveDownBlock(int* arryMap, int nStep, struct tagTetisPlay* pMyTetis);
 
 // 碰撞与越界检测
-int IsCollisionAndOutMap(int* arryMap, tagTetisPlay* pMyTetis);
+int IsCollisionAndOutMap(int* arryMap, struct tagTetisPlay* pMyTetis);
 
 // 游戏结束判断
-int IsGameOver(int* arryMap, tagTetisPlay* pMyTetis);
+int IsGameOver(int* arryMap, struct tagTetisPlay* pMyTetis);
