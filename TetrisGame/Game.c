@@ -269,7 +269,7 @@ int DrapGui(int* arryMap, struct tagTetisPlay* pMyTetis)
 		printf("\n");
 	}
 
-	return 0;
+	return YES;
 }
 
 int GetBlock(struct tagCoord* NewBlockCoord)
